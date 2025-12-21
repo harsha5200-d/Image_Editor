@@ -1,0 +1,382 @@
+/* =======================
+   RESET & BASE
+======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =======================
+   VARIABLES
+======================= */
+:root {
+    --bg-primary-color: #0c0f16;
+    --bg-secondary-color: #141824;
+    --bg-panel-color: #1b2130;
+
+    --bg-accent-color: #4f7cff;
+    --bg-success-color: #22c55e;
+    --bg-danger-color: #ef4444;
+    --bg-active-color: #6b7280;
+
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+
+    --padding-sm: 0.5rem;
+    --padding-md: 0.75rem;
+    --padding-lg: 1.25rem;
+
+    --margin-sm: 0.75rem;
+
+    --gutter-md: 1rem;
+    --gutter-lg: 1.5rem;
+
+    --border-radius-md: 10px;
+    --border-radius-lg: 14px;
+    --border-radius-xl: 22px;
+
+    --font-sm: 0.85rem;
+    --font-md: 0.95rem;
+    --font-lg: 1.15rem;
+
+    --ease: cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+/* =======================
+   GLOBAL
+======================= */
+html, body {
+    height: 100%;
+    background: radial-gradient(circle at top, #161b2e, #0c0f16);
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+body {
+    animation: appEnter 0.8s var(--ease) both;
+}
+
+@keyframes appEnter {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =======================
+   LAYOUT
+======================= */
+main {
+    width: 100%;
+}
+
+main section {
+    width: 100%;
+    padding: var(--padding-lg);
+    display: flex;
+    gap: var(--gutter-lg);
+}
+
+/* =======================
+   BUTTONS
+======================= */
+.btn {
+    position: relative;
+    padding: var(--padding-sm) var(--padding-md);
+    background: linear-gradient(135deg, #5b8cff, #3b5bdb);
+    border: none;
+    border-radius: var(--border-radius-lg);
+    color: white;
+    cursor: pointer;
+    font-size: var(--font-md);
+    font-weight: 600;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.4);
+    transition: all 0.25s var(--ease);
+    overflow: hidden;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+}
+
+.btn:hover::after {
+    opacity: 1;
+}
+
+.btn:active {
+    transform: scale(0.96);
+    box-shadow: inset 0 6px 12px rgba(0,0,0,0.5);
+}
+
+#reset-btn {
+    background: linear-gradient(135deg, #f87171, #dc2626);
+}
+
+#download-btn {
+    background: linear-gradient(135deg, #34d399, #16a34a);
+}
+
+/* =======================
+   LEFT PANEL
+======================= */
+main section .left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter-md);
+    width: 70%;
+}
+
+/* =======================
+   RIGHT PANEL
+======================= */
+main section .right {
+    width: 30%;
+    background: rgba(27, 33, 48, 0.88);
+    backdrop-filter: blur(14px);
+    padding: var(--padding-lg);
+    border-radius: var(--border-radius-xl);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.06),
+        0 25px 55px rgba(0,0,0,0.6);
+    transition: all 0.3s var(--ease);
+}
+
+main section .right:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.1),
+        0 35px 80px rgba(0,0,0,0.75);
+}
+
+/* =======================
+   TOP BAR
+======================= */
+main section .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gutter-md);
+}
+
+/* =======================
+   IMAGE WORKSPACE
+======================= */
+main section .bottom {
+    background: linear-gradient(145deg, #242a3c, #141824);
+    min-height: 420px;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    border-radius: var(--border-radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.05),
+        0 30px 70px rgba(0,0,0,0.8);
+    transition: all 0.35s var(--ease);
+}
+
+main section .bottom:hover {
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.1),
+        0 45px 90px rgba(0,0,0,0.9);
+}
+
+/* subtle lighting overlay */
+main section .bottom::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.06),
+        transparent 35%,
+        transparent 65%,
+        rgba(0,0,0,0.35)
+    );
+    pointer-events: none;
+}
+
+/* =======================
+   PLACEHOLDER
+======================= */
+main section .bottom .placeholder {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gutter-md);
+    color: var(--text-secondary);
+    opacity: 0.45;
+    pointer-events: none;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+main section .bottom .placeholder i {
+    font-size: 9rem;
+}
+
+main section .bottom .placeholder p {
+    font-size: var(--font-lg);
+    letter-spacing: 0.6px;
+}
+
+/* =======================
+   SLIDERS
+======================= */
+main section .right .filter input {
+    width: 100%;
+    appearance: none;
+    outline: none;
+    background: transparent;
+    margin-top: var(--margin-sm);
+}
+
+main section .right .filter input::-webkit-slider-runnable-track {
+    height: 4px;
+    background: linear-gradient(to right, #4f7cff, #9ca3af);
+    border-radius: var(--border-radius-md);
+}
+
+main section .right .filter input::-moz-range-track {
+    height: 4px;
+    background: linear-gradient(to right, #4f7cff, #9ca3af);
+}
+
+main section .right .filter input::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    margin-top: -7px;
+    box-shadow:
+        0 0 0 4px rgba(79,124,255,0.35),
+        0 6px 14px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+main section .right .filter input::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* =======================
+   CANVAS
+======================= */
+canvas {
+    max-width: 100%;
+    height: 80vh;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.8);
+    transition: transform 0.35s var(--ease);
+}
+
+canvas:hover {
+    transform: scale(1.01);
+}
+
+/* =======================
+   PRESETS
+======================= */
+.presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter-md);
+    margin-top: var(--margin-sm);
+}
+
+.preset {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.preset:hover {
+    transform: scale(1.1);
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.6);
+}
+
+.preset img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+header {
+    text-align: center;
+    padding: var(--padding-sm) 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+header span {
+    color: var(--bg-accent-color);
+}   
+
+header i {
+    margin-right: 8px;
+}   
+
+header a {
+    color: var(--bg-accent-color);
+    text-decoration: none;
+}
+
+@keyframes appEnter {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+    }   
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.logo img {
+    width: 36px;
+    height: 36px;
+}
+
+.tagline {
+    text-align: center;
+    margin-top: var(--margin-sm);
+    color: var(--text-secondary);
+    font-size: var(--font-md);
+}
