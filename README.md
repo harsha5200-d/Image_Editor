@@ -6,7 +6,7 @@ PixelForge is a powerful, browser-based image editing tool designed for simplici
 
 ---
 
-## 🚀 Live Demo.
+## 🚀 Live Demo
 
 Experience PixelForge in action:  
 **[👉 View Live Project](https://harsha5200-d.github.io/Image_Editor/)**
