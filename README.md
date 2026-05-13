@@ -2,7 +2,7 @@
 
 ![PixelForge Banner](banner.png)
 
-PixelForge is a powerful, browser-based image editing tool designed for simplicity and speed. Built with pure JavaScript, it offers a suite of professional filters and presets to transform your photos instantly without the need for heavy software.
+PixelForge is a powerful, browser-based image editing tool designed for simplicity and speed. Built with pure JavaScript, it offers a suite of professional filter and presets to transform your photos instantly without the need for heavy software.
 
 ---
 
